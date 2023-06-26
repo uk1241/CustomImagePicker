@@ -13,6 +13,8 @@
 		8D84AA9E2A49403B0090AFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D84AA9C2A49403B0090AFF8 /* Main.storyboard */; };
 		8D84AAA02A49403C0090AFF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D84AA9F2A49403C0090AFF8 /* Assets.xcassets */; };
 		8D84AAA32A49403C0090AFF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D84AAA12A49403C0090AFF8 /* LaunchScreen.storyboard */; };
+		8D84AACB2A4973BF0090AFF8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */; };
+		8D84AACD2A497D0D0090AFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8D84AA9F2A49403C0090AFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D84AAA22A49403C0090AFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D84AAA42A49403C0090AFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				8D84AA962A49403B0090AFF8 /* AppDelegate.swift */,
 				8D84AA982A49403B0090AFF8 /* SceneDelegate.swift */,
 				8D84AA9A2A49403B0090AFF8 /* ViewController.swift */,
+				8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */,
+				8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */,
 				8D84AA9C2A49403B0090AFF8 /* Main.storyboard */,
 				8D84AA9F2A49403C0090AFF8 /* Assets.xcassets */,
 				8D84AAA12A49403C0090AFF8 /* LaunchScreen.storyboard */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D84AA9B2A49403B0090AFF8 /* ViewController.swift in Sources */,
+				8D84AACB2A4973BF0090AFF8 /* CameraViewController.swift in Sources */,
+				8D84AACD2A497D0D0090AFF8 /* ImageViewController.swift in Sources */,
 				8D84AA972A49403B0090AFF8 /* AppDelegate.swift in Sources */,
 				8D84AA992A49403B0090AFF8 /* SceneDelegate.swift in Sources */,
 			);
@@ -285,9 +293,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JCF7F36TC7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = U95U5WL6SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CustomImagePicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -295,13 +305,16 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = appsteam.CustomImagePicker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucent.personix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = LucentDevelopmentNew11;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,9 +326,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JCF7F36TC7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = U95U5WL6SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CustomImagePicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -323,13 +338,16 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = appsteam.CustomImagePicker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucent.personix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = LucentDevelopmentNew11;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
