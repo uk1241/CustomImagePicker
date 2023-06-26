@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Vision
+import RSKImageCropperSwift
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
@@ -16,8 +17,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var imageView: UIImageView!
     var circleView: UIView!
     var captureButton: UIButton!
-    var capturedImage: [UIImage] = []
-    
+    var capturedImages: [UIImage] = []
+    var capturedImage: UIImage?
+    var croppedImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -92,7 +94,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.addSubview(circleView)
         view.addSubview(captureButton)
-        //        view.addSubview(useButton)
+       
         
     }
     
@@ -116,29 +118,29 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func useButtonTapped() {
-        // Handle the useButton tap event
+//        cropImage()
+        
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let jumpToPage = storyBoard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
-        jumpToPage.capturedImages = capturedImage
+        jumpToPage.capturedImages = capturedImages
         self.navigationController?.pushViewController(jumpToPage, animated: true)
-        
     }
-    
-    
+
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation(),
            let image = UIImage(data: imageData) {
             
             imageView.image = image
             imageView.alpha = 1.0
-//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let imageViewController = storyBoard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
-           // Pass the captured image to the ImageViewController
-            capturedImage.append(image)
+            //            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            //            let imageViewController = storyBoard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+            // Pass the captured image to the ImageViewController
+            capturedImages.append(image)
             
-
+            
         }
-//
+        //
     }
     
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -162,47 +164,65 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         return maskLayer
     }
     
+    func cropImage() {
+        guard let capturedImage = capturedImage else {
+            return
+        }
+        
+        let scale = capturedImage.size.width / previewLayer.bounds.width
+        let circleFrame = circleView.convert(circleView.bounds, to: previewLayer as! UICoordinateSpace)
+        let circleRect = CGRect(x: circleFrame.origin.x * scale,
+                                y: circleFrame.origin.y * scale,
+                                width: circleFrame.size.width * scale,
+                                height: circleFrame.size.height * scale)
+        
+        if let cgImage = capturedImage.cgImage?.cropping(to: circleRect) {
+            croppedImage = UIImage(cgImage: cgImage)
+        }
+    }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         previewLayer.frame = view.bounds
     }
     
-//    func performFaceRecognition(image: UIImage) {
-//        guard let ciImage = CIImage(image: image) else {
-//            return
-//        }
-//
-//        let faceRequest = VNDetectFaceRectanglesRequest { [weak self] (request, error) in
-//            guard let observations = request.results as? [VNFaceObservation] else {
-//                return
-//            }
-//
-//            for observation in observations {
-//                let boundingBox = observation.boundingBox
-//                let imageSize = image.size
-//                let faceBoundingBox = CGRect(x: boundingBox.origin.x * imageSize.width,
-//                                             y: (1 - boundingBox.origin.y - boundingBox.size.height) * imageSize.height,
-//                                             width: boundingBox.size.width * imageSize.width,
-//                                             height: boundingBox.size.height * imageSize.height)
-//
-//                let roundBoxLayer = CAShapeLayer()
-//                roundBoxLayer.path = UIBezierPath(ovalIn: faceBoundingBox).cgPath
-//                roundBoxLayer.lineWidth = 2.0
-//                roundBoxLayer.strokeColor = UIColor.red.cgColor
-//                roundBoxLayer.fillColor = UIColor.clear.cgColor
-//
-//                self?.circleView.layer.addSublayer(roundBoxLayer)
-//            }
-//        }
-//
-//        let faceRequestHandler = VNImageRequestHandler(ciImage: ciImage, orientation: .up)
-//        do {
-//            try faceRequestHandler.perform([faceRequest])
-//        } catch {
-//            print("Face detection error: \(error)")
-//        }
-//    }
+    //    func performFaceRecognition(image: UIImage) {
+    //        guard let ciImage = CIImage(image: image) else {
+    //            return
+    //        }
+    //
+    //        let faceRequest = VNDetectFaceRectanglesRequest { [weak self] (request, error) in
+    //            guard let observations = request.results as? [VNFaceObservation] else {
+    //                return
+    //            }
+    //
+    //            for observation in observations {
+    //                let boundingBox = observation.boundingBox
+    //                let imageSize = image.size
+    //                let faceBoundingBox = CGRect(x: boundingBox.origin.x * imageSize.width,
+    //                                             y: (1 - boundingBox.origin.y - boundingBox.size.height) * imageSize.height,
+    //                                             width: boundingBox.size.width * imageSize.width,
+    //                                             height: boundingBox.size.height * imageSize.height)
+    //
+    //                let roundBoxLayer = CAShapeLayer()
+    //                roundBoxLayer.path = UIBezierPath(ovalIn: faceBoundingBox).cgPath
+    //                roundBoxLayer.lineWidth = 2.0
+    //                roundBoxLayer.strokeColor = UIColor.red.cgColor
+    //                roundBoxLayer.fillColor = UIColor.clear.cgColor
+    //
+    //                self?.circleView.layer.addSublayer(roundBoxLayer)
+    //            }
+    //        }
+    //
+    //        let faceRequestHandler = VNImageRequestHandler(ciImage: ciImage, orientation: .up)
+    //        do {
+    //            try faceRequestHandler.perform([faceRequest])
+    //        } catch {
+    //            print("Face detection error: \(error)")
+    //        }
+    //    }
 }
 
 
