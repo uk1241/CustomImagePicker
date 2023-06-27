@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Vision
 import RSKImageCropperSwift
+import CropViewController
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
@@ -24,8 +25,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         captureSession = AVCaptureSession()
-        guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
-              let input = try? AVCaptureDeviceInput(device: frontCamera) else {
+        
+        guard let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
+              let input = try? AVCaptureDeviceInput(device: backCamera)
+        else
+        {
             print("Unable to access the front camera")
             return
         }
@@ -94,18 +98,25 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.addSubview(circleView)
         view.addSubview(captureButton)
-       
+        
         
     }
     
     @objc func captureButtonTapped() {
-        guard let photoOutput = captureSession.outputs.first as? AVCapturePhotoOutput else {
+        guard let photoOutput = captureSession.outputs.first as? AVCapturePhotoOutput
+        else
+        {
             captureButton?.isHidden = true
             return
         }
         
         let photoSettings = AVCapturePhotoSettings()
         photoOutput.capturePhoto(with: photoSettings, delegate: self)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let TOCropViewController = storyBoard.instantiateViewController(withIdentifier: "TOCropViewController") as! TOCropViewController
+        TOCropViewController.CropArray = capturedImages
+        self.navigationController?.pushViewController(TOCropViewController, animated: true)
+        
         
         // Create and add the useButton as a subview
         let useButton = UIButton(type: .custom)
@@ -118,7 +129,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func useButtonTapped() {
-//        cropImage()
+        //        cropImage()
         
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -126,17 +137,17 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         jumpToPage.capturedImages = capturedImages
         self.navigationController?.pushViewController(jumpToPage, animated: true)
     }
-
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation(),
            let image = UIImage(data: imageData) {
-            
+            capturedImages.append(image)
             imageView.image = image
             imageView.alpha = 1.0
             //            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             //            let imageViewController = storyBoard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
             // Pass the captured image to the ImageViewController
-            capturedImages.append(image)
+            
             
             
         }
@@ -164,22 +175,22 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         return maskLayer
     }
     
-    func cropImage() {
-        guard let capturedImage = capturedImage else {
-            return
-        }
-        
-        let scale = capturedImage.size.width / previewLayer.bounds.width
-        let circleFrame = circleView.convert(circleView.bounds, to: previewLayer as! UICoordinateSpace)
-        let circleRect = CGRect(x: circleFrame.origin.x * scale,
-                                y: circleFrame.origin.y * scale,
-                                width: circleFrame.size.width * scale,
-                                height: circleFrame.size.height * scale)
-        
-        if let cgImage = capturedImage.cgImage?.cropping(to: circleRect) {
-            croppedImage = UIImage(cgImage: cgImage)
-        }
-    }
+//    func cropImage() {
+//        guard let capturedImage = capturedImage else {
+//            return
+//        }
+//        
+//        let scale = capturedImage.size.width / previewLayer.bounds.width
+//        let circleFrame = circleView.convert(circleView.bounds, to: previewLayer as! UICoordinateSpace)
+//        let circleRect = CGRect(x: circleFrame.origin.x * scale,
+//                                y: circleFrame.origin.y * scale,
+//                                width: circleFrame.size.width * scale,
+//                                height: circleFrame.size.height * scale)
+//        
+//        if let cgImage = capturedImage.cgImage?.cropping(to: circleRect) {
+//            croppedImage = UIImage(cgImage: cgImage)
+//        }
+//    }
     
     
     

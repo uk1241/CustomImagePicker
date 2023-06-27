@@ -16,6 +16,7 @@
 		8D84AAA32A49403C0090AFF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D84AAA12A49403C0090AFF8 /* LaunchScreen.storyboard */; };
 		8D84AACB2A4973BF0090AFF8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */; };
 		8D84AACD2A497D0D0090AFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */; };
+		8DCE7A112A4ADD1B005E8051 /* TOCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE7A102A4ADD1B005E8051 /* TOCropViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8D84AAA42A49403C0090AFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		8DCE7A102A4ADD1B005E8051 /* TOCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCropViewController.swift; sourceTree = "<group>"; };
 		F8976549F5E7DB9F4B78D9ED /* Pods-CustomImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomImagePicker.release.xcconfig"; path = "Target Support Files/Pods-CustomImagePicker/Pods-CustomImagePicker.release.xcconfig"; sourceTree = "<group>"; };
 		FEC842BA700FC997D9E939D1 /* Pods-CustomImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomImagePicker.debug.xcconfig"; path = "Target Support Files/Pods-CustomImagePicker/Pods-CustomImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				8D84AA9A2A49403B0090AFF8 /* ViewController.swift */,
 				8D84AACC2A497D0D0090AFF8 /* ImageViewController.swift */,
 				8D84AACA2A4973BF0090AFF8 /* CameraViewController.swift */,
+				8DCE7A102A4ADD1B005E8051 /* TOCropViewController.swift */,
 				8D84AA9C2A49403B0090AFF8 /* Main.storyboard */,
 				8D84AA9F2A49403C0090AFF8 /* Assets.xcassets */,
 				8D84AAA12A49403C0090AFF8 /* LaunchScreen.storyboard */,
@@ -86,7 +89,6 @@
 				FEC842BA700FC997D9E939D1 /* Pods-CustomImagePicker.debug.xcconfig */,
 				F8976549F5E7DB9F4B78D9ED /* Pods-CustomImagePicker.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -218,6 +220,7 @@
 				8D84AACD2A497D0D0090AFF8 /* ImageViewController.swift in Sources */,
 				8D84AA972A49403B0090AFF8 /* AppDelegate.swift in Sources */,
 				8D84AA992A49403B0090AFF8 /* SceneDelegate.swift in Sources */,
+				8DCE7A112A4ADD1B005E8051 /* TOCropViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

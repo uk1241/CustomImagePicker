@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomImagePicker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -26,8 +26,8 @@
                                     <constraint firstAttribute="height" constant="200" id="x79-0l-zIE"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="06K-37-bqW">
-                                <rect key="frame" x="0.0" y="633" width="393" height="185"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06K-37-bqW">
+                                <rect key="frame" x="0.0" y="677" width="393" height="141"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lj-Qt-ybg">
                                         <rect key="frame" x="43" y="42" width="100" height="100"/>
@@ -42,8 +42,8 @@
                                             <action selector="camerabtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3QI-Qg-mA6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvw-22-lR0">
-                                        <rect key="frame" x="173" y="42" width="100" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvw-22-lR0">
+                                        <rect key="frame" x="173" y="-2" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="6Pq-Cn-XTH"/>
                                             <constraint firstAttribute="height" constant="100" id="zQT-y6-F9X"/>
@@ -148,6 +148,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceQ-13-FRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031" y="625"/>
+        </scene>
+        <!--Custom Image Picker.TO Crop View Controller-->
+        <scene sceneID="Ntu-ao-cCL">
+            <objects>
+                <viewController storyboardIdentifier="TOCropViewController" id="tOq-t5-wzC" customClass="CustomImagePicker.TOCropViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E9o-uI-uRx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="n3G-Fx-Kiy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ujW-GJ-fbV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="656"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="km2-OX-IRp">
